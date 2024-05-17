@@ -1,17 +1,17 @@
 const handleHome = (req, res) => {
-    const todos = [
-      {
-        description: "ir al gimnasio",
-        priority: "alta",
-        date: "2024-09-13",
-      },
-    ];
-    res.send(todos);
-  };
-  
-  const handleReport = (req, res) => {
-    // engine
-    let responsex = `
+  const todos = [
+    {
+      description: "ir al gimnasio",
+      priority: "alta",
+      date: "2024-09-13",
+    },
+  ];
+  res.send(todos);
+};
+
+const handleReport = (req, res) => {
+  // engine
+  let responsex = `
     <table>
     <thead>
       <tr>
@@ -27,19 +27,18 @@ const handleHome = (req, res) => {
     </tbody>
     </table>
     `;
-  
-    // res.send(response);
-    const title = "pedro";
-    const users = [
-      { name: "pedro", lastName: "perez" },
-      { name: "juan", lastName: "gomez" },
-      { name: "maria", lastName: "martinez" },
-      { name: "fede", lastName: "feliz" },
-      { name: "ana", lastName: "diaz" },
-    ];
-  
-    res.render("../src/views/report", { title, users });
-  };
-  
-  module.exports = { handleHome, handleReport };
-  
+
+  // res.send(response);
+  const title = "pedro";
+  const users = [
+    { name: "pedro", lastName: "perez" },
+    { name: "juan", lastName: "gomez" },
+    { name: "maria", lastName: "martinez" },
+    { name: "fede", lastName: "feliz" },
+    { name: "ana", lastName: "diaz" },
+  ];
+
+  res.render("../src/views/report", { title, users });
+};
+
+module.exports = { handleHome, handleReport };

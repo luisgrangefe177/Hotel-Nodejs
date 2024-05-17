@@ -1,5 +1,6 @@
 const express = require("express");
 const app = express();
+//definicion del servidor
 const port = process.env.PORT || 3000;
 const router = require("./router");
 
