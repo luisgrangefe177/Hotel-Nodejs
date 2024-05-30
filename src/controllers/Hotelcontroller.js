@@ -157,7 +157,7 @@ const deleteHotel = async (req, res) => {
     console.log(error);
   }
 
-  //lógica para eliminar un todo
+  //lógica para eliminar una reserva
   res.send(response);
 };
 
