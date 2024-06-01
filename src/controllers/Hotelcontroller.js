@@ -38,23 +38,15 @@ const createHotel = async (req, res) => {
       body.nameperson &&
       body.numRoom &&
       body.typeRoom &&
-      body.dateStar &&
-      body.dateEnd &&
-      body.letteRoom &&
-      body.catDays &&
-      body.costRom &&
-      body.costTotal
+      body.dataStar &&
+      body.dataEnd
     ) {
       response = await createRoom(
         body.nameperson,
         Number(body.numRoom),
         Number(body.typeRoom),
-        body.dateStar,
-        body.dateEnd,
-        body.letteRoom,
-        Number(body.catDays),
-        Number(body.costRom),
-        Number(body.costTotal)
+        body.dataStar,
+        body.dataEnd
       );
     }
   } catch (error) {
@@ -77,44 +69,17 @@ const updateteHotel = async (req, res) => {
       params: { id_rooms },
     } = req;
     const {
-      body: {
-        nameperson,
-        numRoom,
-        typeRoom,
-        dateStar,
-        dateEnd,
-        letteRoom,
-        catDays,
-        costRom,
-        costTotal,
-        completed,
-      },
+      body: { nameperson, numRoom, typeRoom, dataStar, dataEnd },
     } = req;
 
-    if (
-      id_rooms &&
-      nameperson &&
-      numRoom &&
-      typeRoom &&
-      dateStar &&
-      dateEnd &&
-      letteRoom &&
-      catDays &&
-      costRom &&
-      costTotal
-    ) {
+    if (id_rooms && nameperson && numRoom && typeRoom && dataStar && dataEnd) {
       const updateProcess = await updateRoom(
         id_rooms,
         nameperson,
         numRoom,
         typeRoom,
-        dateStar,
-        dateEnd,
-        letteRoom,
-        catDays,
-        costRom,
-        costTotal,
-        completed
+        dataStar,
+        dataEnd
       );
       console.log(updateProcess);
       response.state = true;

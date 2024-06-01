@@ -24,20 +24,10 @@ const getTodoById = async (id_rooms) => {
   }
 };
 
-const createRoom = async (
-  nameperson,
-  numRoom,
-  typeRoom,
-  dateStar,
-  dateEnd,
-  letteRoom,
-  catDays,
-  costRom,
-  costTotal
-) => {
+const createRoom = async (nameperson, numRoom, typeRoom, dateStar, dateEnd) => {
   try {
     const sql =
-      "insert into tb_rooms(tr_nameperson,tr_numRoom,tr_typeroom,tr_starDate,tr_dateEnd,tr_letterRoom,tr_catDays,tr_costRom,tr_costTotal) values (?,?,?,?,?,?,?,?,?)";
+      "insert into tb_rooms(tr_nameperson,tr_numRoom,tr_typeroom,tr_starDate,tr_dateEnd ) values (?,?,?,?,?)";
 
     const [rows] = await connection.query(sql, [
       nameperson,
@@ -45,10 +35,6 @@ const createRoom = async (
       typeRoom,
       dateStar,
       dateEnd,
-      letteRoom,
-      catDays,
-      costRom,
-      costTotal,
     ]);
 
     return rows;
@@ -63,28 +49,17 @@ const updateRoom = async (
   numRoom,
   typeRoom,
   dateStar,
-  dateEnd,
-  letteRoom,
-  catDays,
-  costRom,
-  costTotal,
-  completed
+  dateEnd
 ) => {
   try {
     const sql =
-      "update tb_rooms set tr_nameperson=?,tr_numRoom=?,tr_typeroom=?,tr_starDate=?,tr_dateEnd=?,tr_letterRoom=?,tr_catDays=?,tr_costRom=?,tr_costTotal=?,tr_complet=? where id_rooms=?";
+      "update tb_rooms set tr_nameperson=?,tr_numRoom=?,tr_typeroom=?,tr_starDate=?,tr_dateEnd=?,tr_complet=? where id_rooms=? ";
     const [rows] = await connection.query(sql, [
       nameperson,
       numRoom,
       typeRoom,
       dateStar,
       dateEnd,
-      letteRoom,
-      catDays,
-      costRom,
-      costTotal,
-      completed,
-      id_rooms,
     ]);
     return rows;
   } catch (error) {
@@ -93,7 +68,7 @@ const updateRoom = async (
 };
 
 const deleteRoom = async (id_rooms) => {
-  const sql = "delete from tb_rooms where id_rooms=?";
+  const sql = "delete from tb_rooms where id_rooms=? ";
 
   const [rows] = await connection.query(sql, [id_rooms]);
 
@@ -101,7 +76,7 @@ const deleteRoom = async (id_rooms) => {
 };
 
 const completeRoom = async (id_rooms) => {
-  const sql = "update tb_rooms set tr_complet=? where id_rooms=?";
+  const sql = "update tb_rooms set tr_complet=? where id_rooms=? ";
 
   const [rows] = await connection.query(sql, [true, id_rooms]);
 
