@@ -4,8 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "some command to be run",
-    "dev": "node src/server"
+    "dev": "nodemon src/server.js",
+    "start": "node src/server.js",
+    "build": "npm install --omit=dev"
   },
   "author": "",
   "license": "ISC",
