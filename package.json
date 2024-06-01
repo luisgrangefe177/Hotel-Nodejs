@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "some command to be run",
-    "dev": "node --watch src/server"
+    "dev": "node src/server"
   },
   "author": "",
   "license": "ISC",
