@@ -5,7 +5,7 @@ const {
   updateteHotel,
   deleteHotel,
 } = require("./controllers/Hotelcontroller");
-const { checkUser } = require("./controllers/authController");
+// const { checkUser } = require("./controllers/authController");
 const router = express.Router();
 //
 // const { handleHome, handleReport } = require("./controller");
@@ -14,7 +14,7 @@ router.post("/hotel", createHotel);
 router.get("/hotel/:id?", getHotel);
 router.put("/hotel/:id_rooms?", updateteHotel);
 router.delete("/hotel/:id_rooms?", deleteHotel);
-router.post("/auth", checkUser);
+// router.post("/auth", checkUser);
 // router.get("/hotel", [myMiddleware, checkChrome], handleReport);
 
 // router.get("/:id?/:name?", handleHome);
