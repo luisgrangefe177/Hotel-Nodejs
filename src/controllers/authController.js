@@ -11,7 +11,8 @@ const checkUser = async (req, res) => {
       const [user] = await checkUserDB(email);
       console.log(`user`, user);
       if (user) {
-        //const encrypt = await bcrypt.hashSync(password, saltRounds);
+        // const encrypt = await bcrypt.hashSync(password, 10);
+        // console.log(encrypt);
         // $2b$10$SWnj6UFl57muSOJcyqCDhuQipINaFv4NVEoBI/Lz2nMbxVHoCwKAW
         // $2b$10$BZ19UpEgJuPliVwVyvixxuEAfHGtmulYxwHMCgkZrwGaucnXQIOPK
         // $2b$10$dHhg/gt0BYXXS4jLsKqgcuXXtOvFYSRtWyPTdxnd4knpglhifsDd2
