@@ -12,7 +12,7 @@ const getRoom = async () => {
   }
 };
 
-const getTodoById = async (id_rooms) => {
+const gethotelById = async (id_rooms) => {
   try {
     const sql = "select * from tb_rooms where id_rooms=?";
 
@@ -89,5 +89,5 @@ module.exports = {
   updateRoom,
   deleteRoom,
   completeRoom,
-  getTodoById,
+  gethotelById,
 };

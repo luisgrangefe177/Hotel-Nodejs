@@ -1,30 +1,33 @@
 const {
   getRoom,
-  createRoom,
-  updateRoom,
-  deleteRoom,
+  createRoom: createDB,
+  updateRoom: updateDB,
+  deleteRoom: deleteDB,
   completeRoom,
 } = require("../repository/Hotelrespository");
+const {
+  createHotelService,
+  getHotelService,
+  getHotelsService,
+} = require("../service/HotelService");
 
 //donde enviamos el Hotel
 const getHotel = async (req, res) => {
-  let response = {};
-  try {
-    const { query, params } = req;
-    response = await getRoom();
-    if (query.id) {
-      response = roomItems.find((x) => x.id === Number(query.id));
-      if (!response) {
-        response = {
-          state: false,
-          message: "No se encontro informacion con los parametros de busqueda",
-        };
-      }
-    }
-  } catch (error) {
-    console.log(error);
+  //   console.log(`req`, req);
+  const { query, params } = req;
+  // https://mipagina.com?id=4 -> query params
+  // https://mipagina.com/1 -> path params
+
+  console.log(`query`, query);
+  console.log(`params`, params);
+  let response = [];
+  console.log(`response`, response);
+  if (params.id) {
+    response = await getHotelService(params);
+  } else {
+    response = await getHotelsService();
   }
-  // let response = "";
+
   res.send(response);
 };
 
@@ -33,7 +36,6 @@ const createHotel = async (req, res) => {
   // logica para crear la reserva de hotel
   try {
     const { body } = req;
-    console.log("body", body);
     if (
       body.nameperson &&
       body.numRoom &&
@@ -41,13 +43,11 @@ const createHotel = async (req, res) => {
       body.dataStar &&
       body.dataEnd
     ) {
-      response = await createRoom(
-        body.nameperson,
-        Number(body.numRoom),
-        Number(body.typeRoom),
-        body.dataStar,
-        body.dataEnd
-      );
+      response = await createHotelService(body);
+      if (inserted) {
+        response.state = true;
+        response.data = inserted;
+      }
     }
   } catch (error) {
     response = {
@@ -58,6 +58,7 @@ const createHotel = async (req, res) => {
   }
   res.send(response);
 };
+
 const updateteHotel = async (req, res) => {
   // logica para la actualizacion del hotel
   let response = {
@@ -73,7 +74,7 @@ const updateteHotel = async (req, res) => {
     } = req;
 
     if (id_rooms && nameperson && numRoom && typeRoom && dataStar && dataEnd) {
-      const updateProcess = await updateRoom(
+      const updateProcess = await updateDB(
         id_rooms,
         nameperson,
         numRoom,
@@ -108,7 +109,7 @@ const deleteHotel = async (req, res) => {
     } = req;
 
     if (id_rooms) {
-      const deleteProcess = await deleteRoom(id_rooms);
+      const deleteProcess = await deleteDB(id_rooms);
       response.state = true;
       response.process = deleteProcess;
     } else {
@@ -152,10 +153,22 @@ const UpdateComple = async (req, res) => {
   res.send(response);
 };
 
+const getAllHotels = async (req, res) => {
+  const { query, params } = req;
+  let response = [];
+  if (params.id_room) {
+  } else {
+    const responseSQL = await getRoom(); // ->sql
+    response = [...responseSQL];
+  }
+
+  res.send(response);
+};
 module.exports = {
   getHotel,
   createHotel,
   updateteHotel,
   deleteHotel,
   UpdateComple,
+  getAllHotels,
 };
