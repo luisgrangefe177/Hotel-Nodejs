@@ -46,8 +46,8 @@ const createHotelService = async (body) => {
     if (validationtypeRoom.state) {
       const inserted = await createRoom(
         nameperson,
-        Number(numRoom),
-        Number(typeRoom),
+        numRoom,
+        typeRoom,
         dataStar,
         dataEnd
       );
