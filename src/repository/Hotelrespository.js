@@ -24,7 +24,7 @@ const gethotelById = async (id_rooms) => {
   }
 };
 
-const createRoom = async (nameperson, numRoom, typeRoom, dateStar, dateEnd) => {
+const createRoom = async (nameperson, numRoom, typeRoom, starDate, dateEnd) => {
   try {
     const sql =
       "insert into tb_rooms(tr_nameperson,tr_numRoom,tr_typeroom,tr_starDate,tr_dateEnd ) values (?,?,?,?,?)";
@@ -33,7 +33,7 @@ const createRoom = async (nameperson, numRoom, typeRoom, dateStar, dateEnd) => {
       nameperson,
       numRoom,
       typeRoom,
-      dateStar,
+      starDate,
       dateEnd,
     ]);
 
