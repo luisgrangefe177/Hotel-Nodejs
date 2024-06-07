@@ -14,7 +14,7 @@ const getRoom = async () => {
 
 const gethotelById = async (id_rooms) => {
   try {
-    const sql = "select * from tb_rooms where id_rooms=?";
+    const sql = "select * from tb_rooms where tr_id=?";
 
     const [rows] = await connection.query(sql, [id_rooms]);
 
@@ -24,7 +24,7 @@ const gethotelById = async (id_rooms) => {
   }
 };
 
-const createRoom = async (nameperson, numRoom, typeRoom, starDate, dateEnd) => {
+const createRoom = async (nameperson, numRoom, typeRoom, dateStar, dateEnd) => {
   try {
     const sql =
       "insert into tb_rooms(tr_nameperson,tr_numRoom,tr_typeroom,tr_starDate,tr_dateEnd ) values (?,?,?,?,?)";
@@ -33,7 +33,7 @@ const createRoom = async (nameperson, numRoom, typeRoom, starDate, dateEnd) => {
       nameperson,
       numRoom,
       typeRoom,
-      starDate,
+      dateStar,
       dateEnd,
     ]);
 
@@ -53,7 +53,7 @@ const updateRoom = async (
 ) => {
   try {
     const sql =
-      "update tb_rooms set tr_nameperson=?,tr_numRoom=?,tr_typeroom=?,tr_starDate=?,tr_dateEnd=?,tr_complet=? where id_rooms=? ";
+      "update tb_rooms set tr_nameperson=?,tr_numRoom=?,tr_typeroom=?,tr_starDate=?,tr_dateEnd=?,tr_complet=? where tr_id=? ";
     const [rows] = await connection.query(sql, [
       nameperson,
       numRoom,
@@ -68,7 +68,7 @@ const updateRoom = async (
 };
 
 const deleteRoom = async (id_rooms) => {
-  const sql = "delete from tb_rooms where id_rooms=? ";
+  const sql = "delete from tb_rooms where tr_id=? ";
 
   const [rows] = await connection.query(sql, [id_rooms]);
 
@@ -76,7 +76,7 @@ const deleteRoom = async (id_rooms) => {
 };
 
 const completeRoom = async (id_rooms) => {
-  const sql = "update tb_rooms set tr_complet=? where id_rooms=? ";
+  const sql = "update tb_rooms set tr_complet=? where tr_id=? ";
 
   const [rows] = await connection.query(sql, [true, id_rooms]);
 

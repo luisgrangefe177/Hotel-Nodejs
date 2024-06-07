@@ -22,7 +22,7 @@ const checkPriority = (priority) => {
     message: "La opcion no es valida no es válida",
   };
   // medianita
-  const priorityOptions = ["1", "2", "3"];
+  const priorityOptions = [1, 2, 3];
   if (priorityOptions.includes(priority)) {
     response = {
       state: true,
