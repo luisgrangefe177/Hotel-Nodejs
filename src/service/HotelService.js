@@ -41,15 +41,15 @@ const getHotelsService = async () => {
 const createHotelService = async (body) => {
   let response = {};
   try {
-    const { nameperson, numRoom, typeRoom, dataStar, dataEnd } = body;
+    const { nameperson, numRoom, typeRoom, dateStar, dateEnd } = body;
     const validationtypeRoom = checkPriority(typeRoom);
     if (validationtypeRoom.state) {
       const inserted = await createRoom(
         nameperson,
         numRoom,
         typeRoom,
-        dataStar,
-        dataEnd
+        dateStar,
+        dateEnd
       );
       if (inserted) {
         response.state = true;

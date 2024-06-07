@@ -40,13 +40,13 @@ const createHotel = async (req, res) => {
       body.nameperson &&
       body.numRoom &&
       body.typeRoom &&
-      body.dataStar &&
-      body.dataEnd
+      body.dateStar &&
+      body.dateEnd
     ) {
       response = await createHotelService(body);
-      if (inserted) {
+      if (response) {
         response.state = true;
-        response.data = inserted;
+        response.data = response.data;
       }
     }
   } catch (error) {

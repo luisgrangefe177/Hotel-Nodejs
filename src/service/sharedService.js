@@ -22,11 +22,7 @@ const checkPriority = (priority) => {
     message: "La opcion no es valida no es válida",
   };
   // medianita
-  const priorityOptions = [
-    "Habitacion Individual",
-    "Habitacion Doble",
-    "Suit de Lujo",
-  ];
+  const priorityOptions = ["1", "2", "3"];
   if (priorityOptions.includes(priority)) {
     response = {
       state: true,
@@ -37,4 +33,4 @@ const checkPriority = (priority) => {
   return response;
 };
 
-module.exports = { checkDate };
+module.exports = { checkDate, checkPriority };

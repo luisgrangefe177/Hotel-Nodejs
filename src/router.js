@@ -13,15 +13,15 @@ const router = express.Router();
 //
 // const { handleHome, handleReport } = require("./controller");
 // const { myMiddleware, checkChrome } = require("./middleware");
-router.post("/hotel", createHotel);
+router.post("/hoteles", createHotel);
 router.get("/hoteles/:id?", getAllHotels);
 router.post(
-  "/hotel",
+  "/hoteles",
   [checkAutentication, checkAdminAuthorization],
   createHotel
 );
-router.put("/hotel/:id_rooms?", updateteHotel);
-router.delete("/hotel/:id_rooms?", deleteHotel);
+router.put("/hoteles/:id_rooms?", updateteHotel);
+router.delete("/hoteles/:id_rooms?", deleteHotel);
 router.post("/auth", checkUser);
 // router.get("/hotel", [myMiddleware, checkChrome], handleReport);
 
